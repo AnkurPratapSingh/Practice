@@ -1,0 +1,102 @@
+<!-- Build a customizable todo list with the ability to edit, mark as done, and delete 
+tasks -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="task" placeholder="Add a new task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList">
+        
+    </ul>
+
+    <script>
+        
+        const tasks = [];
+
+    
+        function addTask() {
+            const taskInput = document.getElementById('task');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                tasks.push({ text: taskText, done: false });
+                taskInput.value = '';
+                displayTasks();
+            }
+        }
+
+      
+        function displayTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+
+            for (let i = 0; i < tasks.length; i++) {
+                const taskItem = document.createElement('li');
+                const taskText = document.createTextNode(tasks[i].text);
+
+                const editButton = document.createElement('button');
+                editButton.innerText = 'Edit';
+                editButton.onclick = function () {
+                    editTask(i);
+                };
+
+                const doneButton = document.createElement('button');
+                doneButton.innerText = tasks[i].done ? 'Undone' : 'Done';
+                doneButton.onclick = function () {
+                    toggleTaskStatus(i);
+                };
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerText = 'Delete';
+                deleteButton.onclick = function () {
+                    deleteTask(i);
+                };
+
+                taskItem.appendChild(taskText);
+                taskItem.appendChild(editButton);
+                taskItem.appendChild(doneButton);
+                taskItem.appendChild(deleteButton);
+
+                if (tasks[i].done) {
+                    taskItem.classList.add('done');
+                }
+
+                taskList.appendChild(taskItem);
+            }
+        }
+
+        function editTask(index) {
+            const newText = prompt('Edit task:', tasks[index].text);
+
+            if (newText !== null) {
+                tasks[index].text = newText.trim();
+                displayTasks();
+            }
+        }
+
+       
+        function toggleTaskStatus(index) {
+            tasks[index].done = !tasks[index].done;
+            displayTasks();
+        }
+
+       
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            displayTasks();
+        }
+
+        displayTasks();
+    </script>
+</body>
+</html>

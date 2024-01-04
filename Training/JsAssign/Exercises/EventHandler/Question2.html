@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toggle Element Visibility</title>
+    <style>
+        .hidden-element {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleButton">Toggle Element</button>
+    <div class="hidden-element" id="hiddenElement" style="display: none;">
+        This element is hidden by default.
+    </div>
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const hiddenElement = document.getElementById('hiddenElement');
+
+        toggleButton.addEventListener('click', () => {
+            hiddenElement.style.display = hiddenElement.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{
+  "user": [
+    {
+      "name": "Ankur",
+      "email": "Ank@123",
+      "password": "Ankur@123",
+      "id": 1
+    },
+    {
+      "name": "Anil",
+      "email": "Anil@123",
+      "password": "Anil@123",
+      "id": 2
+    },
+    {
+      "name": "Tony",
+      "email": "Tony@mail",
+      "password": "Tony@123",
+      "id": 3
+    },
+    {
+      "name": "Deepak",
+      "email": "Deep@mail",
+      "password": "Deepak@123",
+      "id": 4
+    },
+    {
+      "name": "Sahil",
+      "email": "Sahil@mail",
+      "password": "Sahil@123",
+      "id": 5
+    },
+    {
+      "name": "Shiv",
+      "email": "Shiv@mail",
+      "password": "Shiv@123",
+      "id": 6
+    },
+    {
+      "name": "Ram",
+      "email": "Ram@mail",
+      "password": "Ram@123",
+      "id": 7
+    }
+  ],
+  "restaurant": [
+    {
+      "id": 3,
+      "name": "Pizza Hut",
+      "contact": 77655,
+      "address": "Surat Gujarat"
+    },
+    {
+      "name": "Burgur1 King",
+      "contact": 12345435,
+      "address": "Gandhinagar Gujarat",
+      "id": 4
+    },
+    {
+      "name": "Chai G",
+      "address": "Sector 25",
+      "contact": "9485474",
+      "id": 5
+    },
+    {
+      "name": "KFC",
+      "address": "Delhi",
+      "contact": "234565",
+      "id": 6
+    },
+    {
+      "name": "EatYour",
+      "address": "Surat Gujarat",
+      "contact": "345456",
+      "id": 8
+    }
+  ]
+}

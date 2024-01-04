@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filter Even Numbers</title>
+</head>
+<body>
+<h1>Filter Even Numbers</h1>
+<label for="numbersInput">Enter numbers (comma-separated):</label>
+<input type="text" id="numbersInput" placeholder="e.g., 1, 2, 3, 4">
+<button id="filterButton">Filter Even Numbers</button>
+<p id="result"></p>
+
+<script>
+  const numbersInput = document.getElementById('numbersInput');
+  const filterButton = document.getElementById('filterButton');
+  const resultElement = document.getElementById('result');
+
+  filterButton.addEventListener('click', filterEvenNumbers);
+
+  function filterEvenNumbers() {
+    const inputText = numbersInput.value;
+    const numbersArray = inputText.split(',').map(Number);
+
+    if (!Array.isArray(numbersArray)) {
+      resultElement.textContent = 'Input is not a valid array';
+      return;
+    }
+
+    const evenNumbers = numbersArray.filter(number => number % 2 === 0);
+    resultElement.textContent = `Even numbers: ${evenNumbers.join(', ')}`;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Guessing Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #colorDisplay {
+            font-size: 2rem;
+        }
+        .square {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin: 5px;
+        }
+        #message {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Guessing Game</h1>
+    <div id="colorDisplay"></div>
+    <div id="message"></div>
+    <div id="container">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+    <button id="resetButton">New Colors</button>
+
+    <script>
+        const numSquares = 6;
+        let colors = generateRandomColors(numSquares);
+        const squares = document.querySelectorAll(".square");
+        let pickedColor = pickColor();
+        const colorDisplay = document.getElementById("colorDisplay");
+        const messageDisplay = document.getElementById("message");
+        const resetButton = document.getElementById("resetButton");
+
+        colorDisplay.textContent = pickedColor;
+
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].style.backgroundColor = colors[i];
+            squares[i].addEventListener("click", function () {
+                const clickedColor = this.style.backgroundColor;
+                if (clickedColor === pickedColor) {
+                    messageDisplay.textContent = "Correct!";
+                    changeColors(clickedColor);
+                    resetButton.textContent = "Play Again?";
+                } else {
+                    this.style.backgroundColor = "#232323";
+                    messageDisplay.textContent = "Try Again";
+                }
+            });
+        }
+
+        function changeColors(color) {
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].style.backgroundColor = color;
+            }
+        }
+
+        function pickColor() {
+            const random = Math.floor(Math.random() * colors.length);
+            return colors[random];
+        }
+
+        function generateRandomColors(num) {
+            const arr = [];
+            for (let i = 0; i < num; i++) {
+                arr.push(randomColor());
+            }
+            return arr;
+        }
+
+        function randomColor() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        resetButton.addEventListener("click", function () {
+            console.log("rest 1")
+            colors = generateRandomColors(numSquares);
+            pickedColor = pickColor();
+            colorDisplay.textContent = pickedColor;
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].style.backgroundColor = colors[i];
+            }
+            console.log("rest 1")
+
+            resetButton.textContent = "New Colors";
+            messageDisplay.textContent = "";
+        });
+    </script>
+</body>
+</html>

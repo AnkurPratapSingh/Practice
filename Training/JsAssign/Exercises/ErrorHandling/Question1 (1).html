@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Error Handling</title>
+</head>
+<body>
+<h1>API Error Handling</h1>
+
+<button id="successButton">Simulate Success</button>
+<button id="networkErrorButton">Simulate Network Error</button>
+<button id="serverErrorButton">Simulate Server Error</button>
+
+<script>
+  function simulateAPICall(data, simulateNetworkError = false, simulateServerError = false) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (simulateNetworkError) {
+          reject(new Error('Network error occurred'));
+        } else if (simulateServerError) {
+          reject(new Error('Server error occurred'));
+        } else {
+          resolve(data);
+        }
+      }, 1000); // Simulating a delay of 1 second for the API call
+    });
+  }
+
+  const successButton = document.getElementById('successButton');
+  const networkErrorButton = document.getElementById('networkErrorButton');
+  const serverErrorButton = document.getElementById('serverErrorButton');
+
+  successButton.addEventListener('click', () => {
+    simulateAPICall('API data')
+      .then(response => {
+        console.log('API call successful:', response);
+      })
+      .catch(error => {
+        console.error('API call failed:', error.message);
+      });
+  });
+
+  networkErrorButton.addEventListener('click', () => {
+    simulateAPICall('API data', true)
+      .then(response => {
+        console.log('API call successful:', response);
+      })
+      .catch(error => {
+        console.error('API call failed:', error.message);
+      });
+  });
+
+  serverErrorButton.addEventListener('click', () => {
+    simulateAPICall('API data', false, true)
+      .then(response => {
+        console.log('API call successful:', response);
+      })
+      .catch(error => {
+        console.error('API call failed:', error.message);
+      });
+  });
+</script>
+</body>
+</html>

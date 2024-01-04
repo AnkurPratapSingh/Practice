@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<style>
+  .error {
+    color: red;
+  }
+</style>
+</head>
+<body>
+<h1>Form Validation</h1>
+<form id="registrationForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <span id="usernameError" class="error"></span>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span id="emailError" class="error"></span>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  const form = document.getElementById('registrationForm');
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
+  const usernameError = document.getElementById('usernameError');
+  const emailError = document.getElementById('emailError');
+
+  form.addEventListener('submit', function (event) {
+    let isValid = true;
+
+    if (!/^[a-zA-Z0-9]+$/.test(usernameInput.value)) {
+      displayError(usernameError, 'Username must be alphanumeric');
+      isValid = false;
+    } else {
+      clearError(usernameError);
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(emailInput.value)) {
+      displayError(emailError, 'Invalid email format');
+      isValid = false;
+    } else {
+      clearError(emailError);
+    }
+
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
+  function displayError(element, message) {
+    element.textContent = message;
+  }
+
+  function clearError(element) {
+    element.textContent = '';
+  }
+</script>
+</body>
+</html>

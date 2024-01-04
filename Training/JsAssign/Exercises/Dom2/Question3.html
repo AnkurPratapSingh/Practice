@@ -1,0 +1,27 @@
+<!-- Design a dropdown menu that shows and hides its content when clicked. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown Menu</title>
+    <style>
+        .dropdown-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="dropdownButton" onclick="toggleDropdown()">Show Menu</button>
+    <div class="dropdown-content" id="dropdownContent">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <!-- Add more options as needed -->
+    </div>
+    <script>
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdownContent');
+            dropdownContent.style.display = dropdownContent.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

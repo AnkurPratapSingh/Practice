@@ -1,0 +1,30 @@
+<!-- Create a dynamic image gallery where clicking on thumbnails displays the full- -->
+<!-- size image -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        .thumbnail {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="fullImage" src="#" alt="Full-size Image" width="99%">
+    <div class="thumbnail" onclick="displayImage('image1.jpg')" >
+        <img src="image1.jpg" alt="Thumbnail 1" width="200px">
+    </div>
+    <div class="thumbnail" onclick="displayImage('image2.jpeg')" >
+        <img src="image2.jpeg" alt="Thumbnail 2" width="200px">
+    </div>
+    <!-- Add more thumbnails as needed -->
+    <script>
+        function displayImage(imageUrl) {
+            const fullImage = document.getElementById('fullImage');
+            fullImage.src = imageUrl;
+        }
+    </script>
+</body>
+</html>

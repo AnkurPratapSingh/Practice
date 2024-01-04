@@ -1,0 +1,29 @@
+<!-- Develop a script that prevents the default submission of a form and shows a  -->
+<!-- "Thank You" message -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submission</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="thankYouMessage" style="display: none;">Thank you for submitting!</p>
+    <script>
+        const myForm = document.getElementById('myForm');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+
+        myForm.addEventListener('submit', event => {
+            event.preventDefault();
+            myForm.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

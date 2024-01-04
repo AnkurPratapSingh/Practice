@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Example</title>
+</head>
+<body>
+    <h1>Timer Changing  Example</h1>
+    <p id="timer">0 seconds</p>
+
+    <script>
+        
+        let seconds = 0;
+
+        // Function to update the timer content
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            timerElement.innerText = `${seconds} second${seconds !== 1 ? 's' : ''}`;
+            seconds++;
+        }
+
+   
+        const timerInterval = setInterval(updateTimer, 1000);
+
+       
+        setTimeout(() => {
+            clearInterval(timerInterval);   // We stopped this after 10 sec
+            alert('Timer has ended!'); 
+        }, 10000); 
+    </script>
+</body>
+</html>

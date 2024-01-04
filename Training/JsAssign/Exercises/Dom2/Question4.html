@@ -1,0 +1,22 @@
+<!-- Implement a counter that increases or decreases when corresponding buttons  -->
+<!-- are clicked -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter</title>
+</head>
+<body>
+    <p id="counter">0</p>
+    <button onclick="changeCounter(1)">Increase</button>
+    <button onclick="changeCounter(-1)">Decrease</button>
+    <script>
+        let counterValue = 0;
+        const counter = document.getElementById('counter');
+
+        function changeCounter(value) {
+            counterValue += value;
+            counter.textContent = counterValue;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Strength Meter</title>
+<style>
+  #passwordStrength {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<h1>Password Strength Meter</h1>
+<label for="password">Enter Password:</label>
+<input type="password" id="password" onkeyup="checkPasswordStrength()">
+<div id="passwordStrength">
+  <p>Password Strength: <span id="strengthText"></span></p>
+</div>
+
+<script>
+  const passwordInput = document.getElementById('password');
+  const passwordStrengthDiv = document.getElementById('passwordStrength');
+  const strengthText = document.getElementById('strengthText');
+
+  function checkPasswordStrength() {
+    const password = passwordInput.value;
+    const strength = calculatePasswordStrength(password);
+
+    if (password.length === 0) {
+      passwordStrengthDiv.style.display = 'none';
+    } else {
+      passwordStrengthDiv.style.display = 'block';
+      strengthText.textContent = getStrengthText(strength);
+    }
+  }
+
+  function calculatePasswordStrength(password) {
+    const length = password.length;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /[0-9]/.test(password);
+    const hasSpecialChars = /[!@#$%^&*()_+{}\[\]:;<>,.?~\-\\/]/.test(password);
+
+    const criteria = [length >= 8, hasUpperCase, hasLowerCase, hasNumbers, hasSpecialChars];
+    const strength = criteria.filter(Boolean).length;
+
+    return strength;
+  }
+
+  function getStrengthText(strength) {
+    const strengthLabels = ['Very Weak', 'Weak', 'Moderate', 'Strong', 'Very Strong'];
+    return strengthLabels[strength - 1];
+  }
+</script>
+</body>
+</html>
